@@ -5,21 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>로또 번호 생성기</title>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; padding-top: 50px; }
-        .lotto-ball { display: inline-block; width: 40px; height: 40px; border-radius: 50%; 
-                      background-color: #FFD700; margin: 5px; line-height: 40px; font-weight: bold; }
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #result {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+        .number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #ffd700;
+            color: #000;
+            line-height: 40px;
+            margin: 0 5px;
+        }
     </style>
 </head>
 <body>
     <h1>로또 번호 생성기</h1>
-    <div>
-        {% for number in numbers %}
-            <span class="lotto-ball">{{ number }}</span>
-        {% endfor %}
-    </div>
-    <br>
-    <a href="/" style="text-decoration: none; padding: 10px 20px; background-color: #4CAF50; color: white; border-radius: 5px;">
-        새 번호 생성
-    </a>
+    <button onclick="generateNumbers()">번호 생성</button>
+    <div id="result"></div>
+
+    <script>
+        function generateNumbers() {
+            let numbers = [];
+            while (numbers.length < 6) {
+                let num = Math.floor(Math.random() * 45) + 1;
+                if (!numbers.includes(num)) {
+                    numbers.push(num);
+                }
+            }
+            numbers.sort((a, b) => a - b);
+            
+            let result = document.getElementById('result');
+            result.innerHTML = numbers.map(num => `<span class="number">${num}</span>`).join('');
+        }
+    </script>
 </body>
 </html>
