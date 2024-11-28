@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로또 번호 생성기</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding-top: 50px; }
+        .lotto-ball { display: inline-block; width: 40px; height: 40px; border-radius: 50%; 
+                      background-color: #FFD700; margin: 5px; line-height: 40px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>로또 번호 생성기</h1>
+    <div>
+        {% for number in numbers %}
+            <span class="lotto-ball">{{ number }}</span>
+        {% endfor %}
+    </div>
+    <br>
+    <a href="/" style="text-decoration: none; padding: 10px 20px; background-color: #4CAF50; color: white; border-radius: 5px;">
+        새 번호 생성
+    </a>
+</body>
+</html>
