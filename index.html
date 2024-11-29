@@ -112,13 +112,13 @@
     
         <!-- 최근 10회차 당첨번호 -->
   async function fetchLottoNumbers() {
-  const table = document.createElement('table');
-  table.innerHTML = `
-    <tr>
-      <th>회차</th>
-      <th>당첨번호</th>
-      <th>보너스</th>
-    </tr>
+    const table = document.createElement('table');
+    table.innerHTML = `
+      <tr>
+        <th>회차</th>
+        <th>당첨번호</th>
+        <th>보너스</th>
+      </tr>
   `;
 
   for (let i = 0; i < 10; i++) {
@@ -132,8 +132,8 @@
   }
 
   document.body.appendChild(table);
-  }
+}
 
-  fetchLottoNumbers();
+fetchLottoNumbers();
 </body>
 </html>
