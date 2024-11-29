@@ -27,6 +27,7 @@
     </style>
 </head>
 <body>
+    <body>
     <h1>로또 번호 생성기</h1>
     <button onclick="generateLottoNumbers()">번호 생성</button>
     <div id="lottoResults"></div>
@@ -34,7 +35,7 @@
     <script>
         function generateLottoNumbers() {
             const results = document.getElementById('lottoResults');
-            results.innerHTML = '';
+            results.innerHTML = ''; // 이전 결과 초기화
 
             for (let i = 0; i < 5; i++) {
                 const numbers = [];
@@ -47,13 +48,14 @@
                 numbers.sort((a, b) => a - b);
                 
                 const row = document.createElement('div');
+                row.className = 'lotto-row'; // 각 줄에 클래스 추가
                 numbers.forEach(num => {
                     const span = document.createElement('span');
                     span.className = 'lotto-number';
                     span.textContent = num;
                     row.appendChild(span);
                 });
-                results.appendChild(row);
+                results.appendChild(row); // 각 줄을 결과에 추가
             }
         }
     </script>
