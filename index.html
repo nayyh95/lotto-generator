@@ -28,22 +28,33 @@
 </head>
 <body>
     <h1>로또 번호 생성기</h1>
-    <button onclick="generateNumbers()">번호 생성</button>
-    <div id="result"></div>
+    <button onclick="generateLottoNumbers()">번호 생성</button>
+    <div id="lottoResults"></div>
 
     <script>
-        function generateNumbers() {
-            let numbers = [];
-            while (numbers.length < 6) {
-                let num = Math.floor(Math.random() * 45) + 1;
-                if (!numbers.includes(num)) {
-                    numbers.push(num);
+        function generateLottoNumbers() {
+            const results = document.getElementById('lottoResults');
+            results.innerHTML = '';
+
+            for (let i = 0; i < 5; i++) {
+                const numbers = [];
+                while (numbers.length < 6) {
+                    const num = Math.floor(Math.random() * 45) + 1;
+                    if (!numbers.includes(num)) {
+                        numbers.push(num);
+                    }
                 }
+                numbers.sort((a, b) => a - b);
+                
+                const row = document.createElement('div');
+                numbers.forEach(num => {
+                    const span = document.createElement('span');
+                    span.className = 'lotto-number';
+                    span.textContent = num;
+                    row.appendChild(span);
+                });
+                results.appendChild(row);
             }
-            numbers.sort((a, b) => a - b);
-            
-            let result = document.getElementById('result');
-            result.innerHTML = numbers.map(num => `<span class="number">${num}</span>`).join('');
         }
     </script>
 </body>
