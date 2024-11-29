@@ -109,31 +109,5 @@
          (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
     </div>
-    
-        <!-- 최근 10회차 당첨번호 -->
-  async function fetchLottoNumbers() {
-    const table = document.createElement('table');
-    table.innerHTML = `
-      <tr>
-        <th>회차</th>
-        <th>당첨번호</th>
-        <th>보너스</th>
-      </tr>
-  `;
-
-  for (let i = 0; i < 10; i++) {
-    const response = await fetch(`https://www.dhlottery.co.kr/common.do?method=getLottoNumber&drwNo=${i+1}`);
-    const data = await response.json();
-    
-    const row = table.insertRow();
-    row.insertCell(0).textContent = data.회차;
-    row.insertCell(1).textContent = data.당첨번호.join(', ');
-    row.insertCell(2).textContent = data.보너스번호;
-  }
-
-  document.body.appendChild(table);
-}
-
-fetchLottoNumbers();
 </body>
 </html>
